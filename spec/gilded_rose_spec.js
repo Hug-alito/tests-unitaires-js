@@ -15,7 +15,7 @@ describe("Gilded Rose", function() {
       new Item("Conjured Mana Cake", 3, 6),
     ];
 
-    const days = Number(process.argv[2]) || 2;;
+    const days = Number(process.argv[12]) || 12;;
     const gildedRose = new Shop(items);
 
     for (let day = 0; day < days; day++) {
@@ -109,4 +109,11 @@ describe("Gilded Rose", function() {
     const items = gildedRose.updateQuality();
     expect(items[0].quality).toBe(38);
   });
+
+  // it("should delete items when quality is 0", function() {
+  //   const rottenItem = new Item("Random Item", 2, 1);
+  //   const gildedRose = new Shop([rottenItem]);
+  //   const items = gildedRose.updateQuality();
+  //   expect(items[0]).toBe(null);
+  // });
 });

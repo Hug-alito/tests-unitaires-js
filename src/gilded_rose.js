@@ -50,16 +50,17 @@ class Shop {
       }
 
       if (item.sellIn < 0) {
-        if (itemName !== 'Aged Brie') {
-          if (itemName !== 'Backstage passes to a TAFKAL80ETC concert') {
-            this.decreaseQuality(item);
-          } else {
-            item.quality = 0;
-          }
-        } else {
-          item.quality = Math.max(0, item.quality - item.quality);
+        if (itemName !== 'Aged Brie' && itemName !== 'Backstage passes to a TAFKAL80ETC concert' && itemName !== 'Sulfuras, Hand of Ragnaros') {
+          this.decreaseQuality(item);
+        } else if (itemName === 'Backstage passes to a TAFKAL80ETC concert' || itemName === "Aged Brie") {
+          item.quality = 0;
         }
       }
+
+      // if (item.quality <= 0) {
+      //   this.items.splice(i, 1);
+      //   i--;
+      // }
     }
 
     return this.items;
