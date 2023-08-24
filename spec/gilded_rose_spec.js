@@ -26,6 +26,13 @@ describe("Gilded Rose", function() {
     }
   });
 
+  it("should increase quality by 1 when there are more than 10 days left", function() {
+    const backstagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20);
+    const gildedRose = new Shop([backstagePass]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).toBe(21);
+  });
+
   it("should increase quality by 2 when there are less than 10 days left", function() {
     const backstagePass = new Item("Backstage passes to a TAFKAL80ETC concert", 9, 20);
     const gildedRose = new Shop([backstagePass]);
@@ -96,7 +103,7 @@ describe("Gilded Rose", function() {
     expect(items[0].quality).toBe(50);
   });
 
-  it("should decrease quality of 1 before concert", function() {
+  it("should decrease quality of 1 before day 0", function() {
     const randomItem = new Item("Random Item", 10, 50);
     const gildedRose = new Shop([randomItem]);
     const items = gildedRose.updateQuality();
