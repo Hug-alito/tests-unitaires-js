@@ -50,7 +50,9 @@ class Shop {
       }
 
       if (item.sellIn < 0) {
-        if (itemName !== 'Aged Brie' && itemName !== 'Backstage passes to a TAFKAL80ETC concert' && itemName !== 'Sulfuras, Hand of Ragnaros') {
+        if (itemName.startsWith('Conjured')) {
+          this.decreaseQuality(item, 2);
+        } else if (itemName !== 'Aged Brie' && itemName !== 'Backstage passes to a TAFKAL80ETC concert' && itemName !== 'Sulfuras, Hand of Ragnaros') {
           this.decreaseQuality(item);
         } else if (itemName === 'Backstage passes to a TAFKAL80ETC concert' || itemName === "Aged Brie") {
           item.quality = 0;

@@ -110,11 +110,18 @@ describe("Gilded Rose", function() {
     expect(items[0].quality).toBe(49);
   });
 
-  it("should decrease quality of 2 for conjured items", function() {
+  it("should decrease quality of 2 for conjured items before day 0", function() {
     const conjuredItem = new Item("Conjured Magic Stick", 10, 40);
     const gildedRose = new Shop([conjuredItem]);
     const items = gildedRose.updateQuality();
     expect(items[0].quality).toBe(38);
+  });
+
+  it("should decrease quality of 4 for conjured items when rotten", function() {
+    const conjuredItem = new Item("Conjured Magic Stick", 0, 40);
+    const gildedRose = new Shop([conjuredItem]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).toBe(36);
   });
 
   // it("should delete items when quality is 0", function() {
